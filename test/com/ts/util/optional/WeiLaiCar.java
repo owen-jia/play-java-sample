@@ -6,6 +6,13 @@ package com.ts.util.optional;
  */
 public class WeiLaiCar implements ICar {
 
+    public WeiLaiCar() {
+    }
+
+    public WeiLaiCar(Integer wheels) {
+        this.wheels = wheels;
+    }
+
     Integer wheels = new Integer(4);
 
     @Override
