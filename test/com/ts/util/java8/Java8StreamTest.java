@@ -5,9 +5,7 @@ import com.ts.util.optional.ICar;
 import com.ts.util.optional.WeiLaiCar;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 /**
  * 测试用例java.util.stream
@@ -83,9 +81,24 @@ public class Java8StreamTest {
         //与上面的顺序正好相反：10 9 8 7 ... 1
     }
 
+    public static void newStream(){
+        Stream<String> stringStream = Stream.of("1","a","c");
+        stringStream.forEach(PrintUtil::printTest);
+        // 1 a c
+
+        Stream<Integer> integerStream = Stream.empty();
+        PrintUtil.printTest("count is " + integerStream.count());
+        //count is 0
+
+        double[] tm = {22D,1.11D,33D,20.12D,11.02D,9.34D};
+        DoubleStream doubleStream = StreamSupport.doubleStream(Spliterators.spliterator(tm,0,5,1),true);
+        doubleStream.filter(a -> a < 20).forEach(PrintUtil::printTest);
+        //1.11 11.02
+    }
+
     public static void main(String[] args){
         Java8StreamTest.init();
 
-        Java8StreamTest.sortedStream();
+        Java8StreamTest.newStream();
     }
 }
